@@ -33,19 +33,25 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Apache Cordova API</title>
+        <title>Apache Cordova API : Dialogs</title>
     </head>
     <body>
         <div class="app">
-            <h1>Apache Cordova API</h1>
+            <h1>Apache Cordova API: Dialogs</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Ready</p>
-                <a href="dialogs.html" class="btn">Dialogs sample</a>
+                <button id="helloButton">Press this</button>
+                <button id="alertTest">Test Alert</button>
+                <button id="confirmTest">Test Confirm</button>
+                <button id="promptTest">Test Prompt</button>
+                <button id="beepTest">Beep!!</button>
+                <div id="result"></div>
+                <a href="index.html" class="btn">Back to index</a>
             </div>
                 <p>Samples collections by Pello Altadill</p>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/dialogs.js"></script>
     </body>
 </html>
