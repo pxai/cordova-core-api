@@ -34,6 +34,22 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var msg = {id: 1, message : 'Sample message'};
+        // Trying all console messages
+        console.log('log> beginning console testing');
+        console.error('error> This is an error message');
+        /*console.exception('exception>  This is an exception message');
+        console.warn('warn> This is a warn message');
+        console.info('info> This is an info message');
+        console.debug('debug> This is a debug message');
+        console.assert('assert> This is an error message');
+        console.dir('dir> This is a dirmessage: ');
+        console.dir(msg);
+        console.dirxml('dirxml> This is an error message');
+        console.time('time> This is a time message');
+        console.timeEnd('timeEnd> This is a timeEnd error message');
+        console.table('table> This is a table message');
+        console.log('Log> End of console testing');*/
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
