@@ -35,9 +35,50 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        var msg = {id: 1, message : 'Sample message'};
-        // Trying all console messages
+        // Show All contacts
         console.log(navigator.contacts);
+        
+        // Create //////////////////////////////////
+        var contact = {"displayName": "Sample User", "phoneNumbers":[555666444]};
+        var myContact = navigator.contacts.create(contact);
+        
+        // Find //////////////////////////////////
+        function onSuccess(contacts) {
+            alert('Found ' + contacts.length + ' contacts.');
+        };
+
+        function onError(contactError) {
+            alert('onError!');
+        };
+
+        // find all contacts with 'Bob' in any name field
+        var options      = new ContactFindOptions();
+        options.filter   = "Sample User";
+        options.multiple = true;
+        options.desiredFields = [navigator.contacts.fieldType.id];
+        options.hasPhoneNumber = true;
+        var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+        navigator.contacts.find(fields, onSuccess, onError, options);
+        
+        // Pick one and save new details //////////////////////////////////
+        navigator.contacts.pickContact(function(contact){
+            console.log('This contact was selected:' + JSON.stringify(contact));
+           var name = new ContactName();
+            name.givenName = "Rey";
+            name.familyName = "Skywalker";
+            contact.name = name;
+
+            // save to device
+            contact.save(onSuccess,onError);
+           },function(err){
+                console.log('Error, contact not found ' + err);
+        });
+        
+        // Remove 
+        // remove the contact from the device
+        contact.remove(onSuccess,onError);
+        
+                
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
