@@ -45,7 +45,8 @@ var app = {
         deviceInfo += '<li><b>Serial:</b>' + device.serial + '</li>';
         deviceInfo += '</ul>';
 
-        $('#status').html(deviceInfo);
+        var status = document.getElementById('status');
+        status.innerHTML = deviceInfo;
         console.log(deviceInfo);
     },
     // Update DOM on a Received Event
