@@ -34,6 +34,19 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var deviceInfo = '<ul>';
+        deviceInfo += '<li><b>Cordova:</b>' + device.cordova + '</li>';
+        deviceInfo += '<li><b>Model:</b>' + device.model + '</li>';
+        deviceInfo += '<li><b>Platform:</b>' + device.platform + '</li>';
+        deviceInfo += '<li><b>UUID:</b>' + device.uuid + '</li>';
+        deviceInfo += '<li><b>Version:</b>' + device.version + '</li>';
+        deviceInfo += '<li><b>Manufacturer:</b>' + device.manufacturer + '</li>';
+        deviceInfo += '<li><b>IsVirtual:</b>' + device.isVirtual + '</li>';
+        deviceInfo += '<li><b>Serial:</b>' + device.serial + '</li>';
+        deviceInfo += '</ul>';
+
+        $('#status').html(deviceInfo);
+        console.log(deviceInfo);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
