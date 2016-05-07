@@ -34,6 +34,28 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log('Checking if compass is ready');
+        console.log(navigator.compass);
+        var status = document.getElementById('status');
+        
+        function onCompassSuccess(heading) {
+            var msg = 'Heading: ' + heading.magneticHeading;
+            status.innerHTML = msg;
+            console.log(msg);
+        };
+
+        function onError(compassError) {
+            var msg = 'Compass error: ' + compassError.code;
+            status.innerHTML = msg;
+            console.log(msg);
+        };
+
+        var options = {
+            frequency: 2000
+        }; 
+
+        var watchID = navigator.compass.watchHeading(onCompassSuccess, onError, options);
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

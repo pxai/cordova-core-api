@@ -36,6 +36,7 @@ var app = {
         app.receivedEvent('deviceready');
         console.log('Showing accelerometer')
         console.log(navigator.accelerometer);
+        var status = document.getElementById('status');
         
         function accelerometerChange(acceleration) {
             var msg =  'Acceleration X: ' + acceleration.x + 
@@ -43,11 +44,14 @@ var app = {
                         ', Z: ' + acceleration.z +
                         'T, imestamp: ' + acceleration.timestamp;
             console.log(msg);
-            
+            status.innerHTML = msg;
         }
 
+        
         function accelerometerError() {
-            alert('onError!');
+            var msg = 'Error with accelerometer';
+            console.log(msg);
+            status.innerHTML = msg;
         }
         
         // options to get data: update every 2 sec
