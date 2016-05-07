@@ -34,6 +34,30 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log('Showing accelerometer')
+        console.log(navigator.accelerometer);
+        
+        function accelerometerChange(acceleration) {
+            var msg =  'Acceleration X: ' + acceleration.x + 
+                        ', Y'  + acceleration.y + 
+                        ', Z: ' + acceleration.z +
+                        'T, imestamp: ' + acceleration.timestamp;
+            console.log(msg);
+            
+        }
+
+        function accelerometerError() {
+            alert('onError!');
+        }
+        
+        // options to get data: update every 2 sec
+        var options = { frequency: 2000 };  // Update every 3 seconds
+
+        // Get ready for accelerometer events
+        navigator.accelerometer.getCurrentAcceleration(accelerometerChange, accelerometerError, options);
+        
+        
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
