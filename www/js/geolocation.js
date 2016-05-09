@@ -34,6 +34,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log(navigator.geolocation);
+        var status = document.getElementById('status');
+        status.innerHTML = JSON.stringify(navigator.geolocation);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

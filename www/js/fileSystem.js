@@ -35,6 +35,9 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         console.log('Trying file system');
+        console.log(cordova.file);
+        var status = document.getElementById('status');
+        status.innerHTML = JSON.stringify(cordova.file);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
