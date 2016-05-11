@@ -37,6 +37,29 @@ var app = {
         console.log(navigator.geolocation);
         var status = document.getElementById('status');
         status.innerHTML = JSON.stringify(navigator.geolocation);
+        
+        var onGeolocationSuccess = function(position) {
+        var msg = '<div>Latitude: '  + position.coords.latitude  + '</div>';
+            msg += '<div>Longitude: ' + position.coords.longitude + '</div>';
+            msg += '<div>Altitude: '  + position.coords.altitude  + '</div>';
+            msg += '<div>Accuracy: '  + position.coords.accuracy  + '</div>';
+            msg += '<div>Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '</div> ';
+            msg += '<div>Heading: '   + position.coords.heading   + '</div>';
+            msg += '<div>Speed: '     + position.coords.speed     + '</div>';
+            msg += '<div>Timestamp: ' + position.timestamp        + '</div>';
+            status.innerHTML = msg;
+            console.log(msg);
+    };
+
+    // onError Callback receives a PositionError object
+    function onError(error) {
+         var msg =' ERROR code: '+ error.code + ' message: ' + error.message;
+         status.innerHTML = msg;
+         console.log('Error: ' + msg);
+    }
+
+    navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onError);
+    
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
