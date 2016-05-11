@@ -37,6 +37,29 @@ var app = {
         console.log(navigator.globalization);
         var status = document.getElementById('status');
         status.innerHTML = JSON.stringify(navigator.globalization);
+        
+        function showMesage (msg) {
+            status.innerHTML += msg;
+            console.log(msg);            
+        }
+        
+        function onSuccessGlobalization (locale) {
+            showMessage('locale: ' + locale.value);
+        }
+        
+        function onError () {
+            showMessage('Error getting locale');
+        }
+    
+        
+        navigator.globalization.getLocaleName(onSuccessGlobalization, onError);
+
+        navigator.globalization.dateToString(
+            new Date(),
+            function (date) { alert('date: ' + date.value + '\n'); },
+            function () { alert('Error getting dateString\n'); },
+            { formatLength: 'short', selector: 'date and time' }
+        );
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
