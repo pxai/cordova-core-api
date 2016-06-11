@@ -34,6 +34,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log('CV> Device is ready phase');
+
+        $('#cameraButton').click(function () {
+            console.log('Taking photo');
+        });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
