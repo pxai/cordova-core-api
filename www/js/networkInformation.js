@@ -48,10 +48,50 @@ var app = {
             // Handle the online event
             var netState = navigator.connection.type;
             msg = 'Network online: ' + netstate;
+            msg = msg + checkConnection();
             status.innerHTML = msg;
             console.log('Error: ' + msg);
 
         }
+        
+        function checkConnection() {
+            var state = navigator.connection.type;
+            var connection = '';
+
+            var states = {};
+            switch (state) {
+                case Connection.UNKNOWN: 
+                    connection = 'Unknown connection';
+                    break;
+                case Connection.ETHERNET: 
+                    connection = 'Ethernet connection';
+                    break;
+                case Connection.WIFI:     
+                    connection = 'WiFi connection';
+                    break;
+                case Connection.CELL_2G:  
+                    connection = 'Cell 2G connection';
+                    break;
+                case Connection.CELL_3G:  
+                    connection = 'Cell 3G connection';
+                    break;
+                case Connection.CELL_4G:  
+                    connection = 'Cell 4G connection';
+                    break;
+                case Connection.CELL:     
+                    connection = 'Cell generic connection';
+                    break;
+                case Connection.NONE:     
+                    connection = 'No network connection';
+                    break;
+                default:
+                    connection = 'Unknown network status';
+                    break;                
+            }
+                        
+            return connection;
+        }
+
 
     },
     // Update DOM on a Received Event
