@@ -52,11 +52,30 @@ var app = {
             console.log(msg);
             }
         });
+ 
+ 
+         $('#cameraButton').click(function () {
+            console.log('Taking photo without options');
+            
+            navigator.camera.getPicture(onCameraSuccess, onCameraError);
+            
+            function onCameraSuccess () {
+                            var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
+            $('#status').html(msg);
+            console.log(msg);
+            }
+            
+            function onCameraError () {
+                            var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+            $('#status').html(msg);
+            console.log(msg);
+            }
+        });
         
         $('#cameraOptionsButton').click(function () {
             console.log('Taking photo with options');
             
-            var options = {
+            var cameraOptions = {
                 quality : 90,
                 destinationType : Camera.DestinationType.DATA_URL,
                 sourceType : Camera.PictureSourceType.CAMERA,
@@ -68,7 +87,7 @@ var app = {
                 saveToPhotoAlbum: false
             };
             
-            navigator.camera.getPicture(onCameraSuccess, onCameraError);
+            navigator.camera.getPicture(onCameraSuccess, onCameraError, cameraOptions);
             
             function onCameraSuccess () {
                             var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
