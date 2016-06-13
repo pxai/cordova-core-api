@@ -34,6 +34,25 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var status = document.getElementById('status');
+        document.addEventListener("offline", onNetworkOffline, false);
+        document.addEventListener("online", onNetworkOnline, false);
+
+        function onNetworkOffline () {
+            msg = 'Network offline: ' + netstate;
+            status.innerHTML = msg;
+            console.log('Error: ' + msg);
+        }
+        
+        function onNetworkOnline () {
+            // Handle the online event
+            var netState = navigator.connection.type;
+            msg = 'Network online: ' + netstate;
+            status.innerHTML = msg;
+            console.log('Error: ' + msg);
+
+        }
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
