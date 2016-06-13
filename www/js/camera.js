@@ -59,16 +59,17 @@ var app = {
             
             navigator.camera.getPicture(onCameraSuccess, onCameraError);
             
-            function onCameraSuccess () {
-                            var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
+            function onCameraSuccess (imageData) {
+                var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
+                $('#status').html(msg);
+                console.log(msg);
+                $('#newImage').attr('src', 'data:image/jpeg;base64,' + imageData);
             }
             
             function onCameraError () {
-                            var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
+                var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+                $('#status').html(msg);
+                console.log(msg);
             }
         });
         
@@ -89,16 +90,17 @@ var app = {
             
             navigator.camera.getPicture(onCameraSuccess, onCameraError, cameraOptions);
             
-            function onCameraSuccess () {
-                            var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
+            function onCameraSuccess (imageData) {
+                var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
+                $('#status').html(msg);
+                console.log(msg);
+                $('#newImage').attr('src', 'data:image/jpeg;base64,' + imageData);
             }
             
             function onCameraError () {
-                            var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
+                var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+                $('#status').html(msg);
+                console.log(msg);
             }
         });
     },
