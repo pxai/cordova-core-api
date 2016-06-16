@@ -34,6 +34,36 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        // Vibrate 1 second
+        navigator.vibrate(1000);
+        
+         $('#vibrateOnce').click(function () {
+             // Vibrate 2 seconds
+             navigator.vibrate([2000]);
+             var msg = 'Vibrating 2sec.';
+             $('#status').html(msg);
+             console.log(msg);
+         });
+
+         $('#vibratePaused').click(function () {
+             // Vibrate three times with pauses
+             navigator.vibrate([2000,1000,1000,500,3000]);
+             var msg = 'Vibrating 2sec., 1sec pause,..';
+             $('#status').html(msg);
+             console.log(msg);
+         });
+
+         $('#cancelVibration').click(function () {
+             // Vibrate three times with pauses
+             navigator.vibrate([0]);
+             // navigator.vibrate([]);
+             // navigator.vibrate(0);
+             var msg = 'Cancel vibration';
+             $('#status').html(msg);
+             console.log(msg);
+             
+         });
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
