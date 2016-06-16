@@ -19,5 +19,33 @@ cordova run browser
 cordova plugin add https://github.com/apache/cordova-plugin-contacts.git
 ```
 
+# API covered
+- Battery
+- Camera
+- Console
+- Contact
+- Device
+- Accelerometer
+- Compass
+- Dialogs
+- Geolocation
+- Globalization
+- Network info
+
+
+# Todo
+- File
+- File Transfer
+- InAppBrowser
+- media
+- mediaCapture
+- Splash
+- StatusBar
+- Vibration
+- Whitelist
+
+
+
+
 # See docs
 Api docs here [https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html]
