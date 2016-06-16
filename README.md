@@ -31,6 +31,7 @@ cordova plugin add https://github.com/apache/cordova-plugin-contacts.git
 - Geolocation
 - Globalization
 - Network info
+- Vibration
 
 
 # Todo
@@ -41,7 +42,6 @@ cordova plugin add https://github.com/apache/cordova-plugin-contacts.git
 - mediaCapture
 - Splash
 - StatusBar
-- Vibration
 - Whitelist
 
 

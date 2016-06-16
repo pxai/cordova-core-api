@@ -54,10 +54,12 @@ var app = {
          });
 
          $('#cancelVibration').click(function () {
-             // Vibrate three times with pauses
+             // Cancel vibration
              navigator.vibrate([0]);
+             // Other options
              // navigator.vibrate([]);
              // navigator.vibrate(0);
+             // navigator.notification.cancelVibration();
              var msg = 'Cancel vibration';
              $('#status').html(msg);
              console.log(msg);

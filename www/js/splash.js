@@ -34,6 +34,21 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log('Splash Screen');
+        var status = document.getElementById('status');
+        status.innerHTML = 'Splash screen starting...';
+ 
+        navigator.splashscreen.show();
+        
+        // timeout to close splash after given time
+        window.setTimeout(function () {
+            navigator.splashscreen.hide();
+        }, 3000);
+        // We could define preferences in config.xml
+        // <preference name="SplashScreenDelay" value="3000" />
+        // <preference name="FadeSplashScreenDuration" value="1000"/
+        //}, splashDuration - fadeDuration);
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
