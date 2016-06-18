@@ -32,7 +32,7 @@ cordova plugin add https://github.com/apache/cordova-plugin-contacts.git
 - Globalization
 - Network info
 - Vibration
-
+- Splash
 
 # Todo
 - File
@@ -40,7 +40,6 @@ cordova plugin add https://github.com/apache/cordova-plugin-contacts.git
 - InAppBrowser
 - media
 - mediaCapture
-- Splash
 - StatusBar
 - Whitelist
 
