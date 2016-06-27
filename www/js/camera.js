@@ -32,78 +32,78 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        console.log('CV> Device is ready phase');
+onDeviceReady: function() {
+  app.receivedEvent('deviceready');
+  console.log('CV> Device is ready phase');
 
-        $('#cameraButton').click(function () {
-            console.log('Taking photo');
-            navigator.camera.getPicture(onCameraSuccess, onCameraError);
-            
-            function onCameraSuccess () {
-                            var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
-            }
-            
-            function onCameraError () {
-                            var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
-            }
-        });
+ $('#cameraButton').click(function () {
+  console.log('Taking photo');
+  navigator.camera.getPicture(onCameraSuccess, onCameraError);
+
+ function onCameraSuccess () {
+    var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
+   $('#status').html(msg);
+   console.log(msg);
+ }
+
+ function onCameraError () {
+    var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+    $('#status').html(msg);
+    console.log(msg);
+ }
+});
  
  
-         $('#cameraButton').click(function () {
-            console.log('Taking photo without options');
-            
-            navigator.camera.getPicture(onCameraSuccess, onCameraError);
-            
-            function onCameraSuccess (imageData) {
-                var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
-                $('#status').html(msg);
-                console.log(msg);
-                $('#newImage').attr('src', 'data:image/jpeg;base64,' + imageData);
-            }
-            
-            function onCameraError () {
-                var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
-                $('#status').html(msg);
-                console.log(msg);
-            }
-        });
+$('#cameraButton').click(function () {
+ console.log('Taking photo without options');
+
+ navigator.camera.getPicture(onCameraSuccess, onCameraError);
+
+ function onCameraSuccess (imageData) {
+    var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
+    $('#status').html(msg);
+    console.log(msg);
+    $('#newImage').attr('src', 'data:image/jpeg;base64,' + imageData);
+ }
+
+ function onCameraError () {
+    var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+    $('#status').html(msg);
+    console.log(msg);
+ }
+});
         
-        $('#cameraOptionsButton').click(function () {
-            console.log('Taking photo with options');
-            
-            var cameraOptions = {
-                quality : 90,
-                destinationType : Camera.DestinationType.DATA_URL,
-                sourceType : Camera.PictureSourceType.CAMERA,
-                allowEdit : true,
-                encodingType: Camera.EncodingType.JPEG,
-                targetWidth: 300,
-                targetHeight: 200,
-                popoverOptions: CameraPopoverOptions,
-                saveToPhotoAlbum: false
-            };
-            
-            navigator.camera.getPicture(onCameraSuccess, onCameraError, cameraOptions);
-            
-            function onCameraSuccess (imageData) {
-                var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
-                $('#status').html(msg);
-                console.log(msg);
-                $('#newImage').attr('src', 'data:image/jpeg;base64,' + imageData);
-            }
-            
-            function onCameraError () {
-                var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
-                $('#status').html(msg);
-                console.log(msg);
-            }
-        });
-    },
+ $('#cameraOptionsButton').click(function () {
+ console.log('Taking photo with options');
+
+ var cameraOptions = {
+    quality : 90,
+    destinationType : Camera.DestinationType.DATA_URL,
+    sourceType : Camera.PictureSourceType.CAMERA,
+    allowEdit : true,
+    encodingType: Camera.EncodingType.JPEG,
+    targetWidth: 300,
+    targetHeight: 200,
+    popoverOptions: CameraPopoverOptions,
+    saveToPhotoAlbum: false
+ };
+
+ navigator.camera.getPicture(onCameraSuccess, onCameraError, cameraOptions);
+
+ function onCameraSuccess (imageData) {
+    var msg = 'Camera: ' + status.level + ' isPlugged: ' + status.isPlugged;
+    $('#status').html(msg);
+    console.log(msg);
+    $('#newImage').attr('src', 'data:image/jpeg;base64,' + imageData);
+ }
+
+  function onCameraError () {
+    var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+    $('#status').html(msg);
+    console.log(msg);
+  }
+ });
+},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);

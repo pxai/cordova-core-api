@@ -19,43 +19,43 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+ this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+ document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        console.log(navigator.geolocation);
-        var status = document.getElementById('status');
-        status.innerHTML = JSON.stringify(navigator.geolocation);
-        
-        var onGeolocationSuccess = function(position) {
-        var msg = '<div>Latitude: '  + position.coords.latitude  + '</div>';
-            msg += '<div>Longitude: ' + position.coords.longitude + '</div>';
-            msg += '<div>Altitude: '  + position.coords.altitude  + '</div>';
-            msg += '<div>Accuracy: '  + position.coords.accuracy  + '</div>';
-            msg += '<div>Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '</div> ';
-            msg += '<div>Heading: '   + position.coords.heading   + '</div>';
-            msg += '<div>Speed: '     + position.coords.speed     + '</div>';
-            msg += '<div>Timestamp: ' + position.timestamp        + '</div>';
-            status.innerHTML = msg;
-            console.log(msg);
+app.receivedEvent('deviceready');
+ console.log(navigator.geolocation);
+ var status = document.getElementById('status');
+ status.innerHTML = JSON.stringify(navigator.geolocation);
+ 
+ var onGeolocationSuccess = function(position) {
+ var msg = '<div>Latitude: '  + position.coords.latitude  + '</div>';
+     msg += '<div>Longitude: ' + position.coords.longitude + '</div>';
+     msg += '<div>Altitude: '  + position.coords.altitude  + '</div>';
+     msg += '<div>Accuracy: '  + position.coords.accuracy  + '</div>';
+     msg += '<div>Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '</div> ';
+     msg += '<div>Heading: '   + position.coords.heading   + '</div>';
+     msg += '<div>Speed: '     + position.coords.speed     + '</div>';
+     msg += '<div>Timestamp: ' + position.timestamp + '</div>';
+     status.innerHTML = msg;
+     console.log(msg);
     };
 
     // onError Callback receives a PositionError object
     function onError(error) {
-         var msg =' ERROR code: '+ error.code + ' message: ' + error.message;
-         status.innerHTML = msg;
-         console.log('Error: ' + msg);
+  var msg =' ERROR code: '+ error.code + ' message: ' + error.message;
+  status.innerHTML = msg;
+  console.log('Error: ' + msg);
     }
 
     navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onError);
@@ -63,14 +63,14 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+ var parentElement = document.getElementById(id);
+ var listeningElement = parentElement.querySelector('.listening');
+ var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+ listeningElement.setAttribute('style', 'display:none;');
+ receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+ console.log('Received Event: ' + id);
     }
 };
 

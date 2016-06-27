@@ -19,91 +19,91 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+ this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+ document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        var status = document.getElementById('status');
-        document.addEventListener("offline", onNetworkOffline, false);
-        document.addEventListener("online", onNetworkOnline, false);
+ app.receivedEvent('deviceready');
+ var status = document.getElementById('status');
+ document.addEventListener("offline", onNetworkOffline, false);
+ document.addEventListener("online", onNetworkOnline, false);
 
-        function onNetworkOffline () {
-            msg = 'Network offline: ' + netstate;
-            status.innerHTML = msg;
-            console.log('Error: ' + msg);
-        }
-        
-        function onNetworkOnline () {
-            // Handle the online event
-            var netState = navigator.connection.type;
-            msg = 'Network online: ' + netstate;
-            msg = msg + checkConnection();
-            status.innerHTML = msg;
-            console.log('Error: ' + msg);
+ function onNetworkOffline () {
+     msg = 'Network offline: ' + netstate;
+     status.innerHTML = msg;
+     console.log('Error: ' + msg);
+ }
+ 
+ function onNetworkOnline () {
+     // Handle the online event
+     var netState = navigator.connection.type;
+     msg = 'Network online: ' + netstate;
+     msg = msg + checkConnection();
+     status.innerHTML = msg;
+     console.log('Error: ' + msg);
 
-        }
-        
-        function checkConnection() {
-            var state = navigator.connection.type;
-            var connection = '';
+ }
+ 
+ function checkConnection() {
+     var state = navigator.connection.type;
+     var connection = '';
 
-            var states = {};
-            switch (state) {
-                case Connection.UNKNOWN: 
-                    connection = 'Unknown connection';
-                    break;
-                case Connection.ETHERNET: 
-                    connection = 'Ethernet connection';
-                    break;
-                case Connection.WIFI:     
-                    connection = 'WiFi connection';
-                    break;
-                case Connection.CELL_2G:  
-                    connection = 'Cell 2G connection';
-                    break;
-                case Connection.CELL_3G:  
-                    connection = 'Cell 3G connection';
-                    break;
-                case Connection.CELL_4G:  
-                    connection = 'Cell 4G connection';
-                    break;
-                case Connection.CELL:     
-                    connection = 'Cell generic connection';
-                    break;
-                case Connection.NONE:     
-                    connection = 'No network connection';
-                    break;
-                default:
-                    connection = 'Unknown network status';
-                    break;                
-            }
-                        
-            return connection;
-        }
+     var states = {};
+     switch (state) {
+  case Connection.UNKNOWN: 
+      connection = 'Unknown connection';
+      break;
+  case Connection.ETHERNET: 
+      connection = 'Ethernet connection';
+      break;
+  case Connection.WIFI:     
+      connection = 'WiFi connection';
+      break;
+  case Connection.CELL_2G:  
+      connection = 'Cell 2G connection';
+      break;
+  case Connection.CELL_3G:  
+      connection = 'Cell 3G connection';
+      break;
+  case Connection.CELL_4G:  
+      connection = 'Cell 4G connection';
+      break;
+  case Connection.CELL:     
+      connection = 'Cell generic connection';
+      break;
+  case Connection.NONE:     
+      connection = 'No network connection';
+      break;
+  default:
+      connection = 'Unknown network status';
+      break;  
+     }
+   
+     return connection;
+ }
 
 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+ var parentElement = document.getElementById(id);
+ var listeningElement = parentElement.querySelector('.listening');
+ var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+ listeningElement.setAttribute('style', 'display:none;');
+ receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+ console.log('Received Event: ' + id);
     }
 };
 

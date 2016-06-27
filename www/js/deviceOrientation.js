@@ -19,54 +19,54 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+ this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+ document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        console.log('Checking if compass is ready');
-        console.log(navigator.compass);
-        var status = document.getElementById('status');
-        
-        function onCompassSuccess(heading) {
-            var msg = 'Heading: ' + heading.magneticHeading;
-            status.innerHTML = msg;
-            console.log(msg);
-        };
+onDeviceReady: function() {
+ app.receivedEvent('deviceready');
+ console.log('Checking if compass is ready');
+ console.log(navigator.compass);
+ var status = document.getElementById('status');
+ 
+ function onCompassSuccess(heading) {
+     var msg = 'Heading: ' + heading.magneticHeading;
+     status.innerHTML = msg;
+     console.log(msg);
+ };
 
-        function onError(compassError) {
-            var msg = 'Compass error: ' + compassError.code;
-            status.innerHTML = msg;
-            console.log(msg);
-        };
+ function onError(compassError) {
+     var msg = 'Compass error: ' + compassError.code;
+     status.innerHTML = msg;
+     console.log(msg);
+ };
 
-        var options = {
-            frequency: 2000
-        }; 
+ var options = {
+     frequency: 2000
+ }; 
 
-        var watchID = navigator.compass.watchHeading(onCompassSuccess, onError, options);
+ var watchID = navigator.compass.watchHeading(onCompassSuccess, onError, options);
 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+ var parentElement = document.getElementById(id);
+ var listeningElement = parentElement.querySelector('.listening');
+ var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+ listeningElement.setAttribute('style', 'display:none;');
+ receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+ console.log('Received Event: ' + id);
     }
 };
 

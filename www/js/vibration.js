@@ -19,64 +19,64 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+ this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+ document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        // Vibrate 1 second
-        navigator.vibrate(1000);
-        
-         $('#vibrateOnce').click(function () {
-             // Vibrate 2 seconds
-             navigator.vibrate([2000]);
-             var msg = 'Vibrating 2sec.';
-             $('#status').html(msg);
-             console.log(msg);
-         });
+ app.receivedEvent('deviceready');
+ // Vibrate 1 second
+ navigator.vibrate(1000);
+ 
+  $('#vibrateOnce').click(function () {
+      // Vibrate 2 seconds
+      navigator.vibrate([2000]);
+      var msg = 'Vibrating 2sec.';
+      $('#status').html(msg);
+      console.log(msg);
+  });
 
-         $('#vibratePaused').click(function () {
-             // Vibrate three times with pauses
-             navigator.vibrate([2000,1000,1000,500,3000]);
-             var msg = 'Vibrating 2sec., 1sec pause,..';
-             $('#status').html(msg);
-             console.log(msg);
-         });
+  $('#vibratePaused').click(function () {
+      // Vibrate three times with pauses
+      navigator.vibrate([2000,1000,1000,500,3000]);
+      var msg = 'Vibrating 2sec., 1sec pause,..';
+      $('#status').html(msg);
+      console.log(msg);
+  });
 
-         $('#cancelVibration').click(function () {
-             // Cancel vibration
-             navigator.vibrate([0]);
-             // Other options
-             // navigator.vibrate([]);
-             // navigator.vibrate(0);
-             // navigator.notification.cancelVibration();
-             var msg = 'Cancel vibration';
-             $('#status').html(msg);
-             console.log(msg);
-             
-         });
-        
+  $('#cancelVibration').click(function () {
+      // Cancel vibration
+      navigator.vibrate([0]);
+      // Other options
+      // navigator.vibrate([]);
+      // navigator.vibrate(0);
+      // navigator.notification.cancelVibration();
+      var msg = 'Cancel vibration';
+      $('#status').html(msg);
+      console.log(msg);
+      
+  });
+ 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+ var parentElement = document.getElementById(id);
+ var listeningElement = parentElement.querySelector('.listening');
+ var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+ listeningElement.setAttribute('style', 'display:none;');
+ receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+ console.log('Received Event: ' + id);
     }
 };
 

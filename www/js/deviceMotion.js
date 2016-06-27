@@ -32,36 +32,36 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        console.log('Showing accelerometer')
-        console.log(navigator.accelerometer);
-        var status = document.getElementById('status');
-        
-        function accelerometerChange(acceleration) {
-            var msg =  'Acceleration X: ' + acceleration.x + 
-                        ', Y'  + acceleration.y + 
-                        ', Z: ' + acceleration.z +
-                        'T, imestamp: ' + acceleration.timestamp;
-            console.log(msg);
-            status.innerHTML = msg;
-        }
+onDeviceReady: function() {
+ app.receivedEvent('deviceready');
+ console.log('Showing accelerometer')
+ console.log(navigator.accelerometer);
+ var status = document.getElementById('status');
+ 
+ function accelerometerChange(acceleration) {
+     var msg =  'Acceleration X: ' + acceleration.x + 
+   ', Y'  + acceleration.y + 
+   ', Z: ' + acceleration.z +
+   'T, imestamp: ' + acceleration.timestamp;
+     console.log(msg);
+     status.innerHTML = msg;
+ }
 
-        
-        function accelerometerError() {
-            var msg = 'Error with accelerometer';
-            console.log(msg);
-            status.innerHTML = msg;
-        }
-        
-        // options to get data: update every 2 sec
-        var options = { frequency: 2000 };  // Update every 3 seconds
+ 
+ function accelerometerError() {
+     var msg = 'Error with accelerometer';
+     console.log(msg);
+     status.innerHTML = msg;
+ }
+ 
+ // options to get data: update every 2 sec
+ var options = { frequency: 2000 };  // Update every 3 seconds
 
-        // Get ready for accelerometer events
-        navigator.accelerometer.getCurrentAcceleration(accelerometerChange, accelerometerError, options);
-        
-        
-        
+ // Get ready for accelerometer events
+ navigator.accelerometer.getCurrentAcceleration(accelerometerChange, accelerometerError, options);
+ 
+ 
+ 
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

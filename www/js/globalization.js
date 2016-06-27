@@ -19,58 +19,58 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+ this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+ document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        console.log(navigator.globalization);
-        var status = document.getElementById('status');
-        status.innerHTML = JSON.stringify(navigator.globalization);
-        
-        function showMesage (msg) {
-            status.innerHTML += msg;
-            console.log(msg);            
-        }
-        
-        function onSuccessGlobalization (locale) {
-            showMessage('locale: ' + locale.value);
-        }
-        
-        function onError () {
-            showMessage('Error getting locale');
-        }
+ app.receivedEvent('deviceready');
+ console.log(navigator.globalization);
+ var status = document.getElementById('status');
+ status.innerHTML = JSON.stringify(navigator.globalization);
+ 
+ function showMesage (msg) {
+     status.innerHTML += msg;
+     console.log(msg);     
+ }
+ 
+ function onSuccessGlobalization (locale) {
+     showMessage('locale: ' + locale.value);
+ }
+ 
+ function onError () {
+     showMessage('Error getting locale');
+ }
     
-        
-        navigator.globalization.getLocaleName(onSuccessGlobalization, onError);
+ 
+ navigator.globalization.getLocaleName(onSuccessGlobalization, onError);
 
-        navigator.globalization.dateToString(
-            new Date(),
-            function (date) { alert('date: ' + date.value + '\n'); },
-            function () { alert('Error getting dateString\n'); },
-            { formatLength: 'short', selector: 'date and time' }
-        );
+ navigator.globalization.dateToString(
+     new Date(),
+     function (date) { alert('date: ' + date.value + '\n'); },
+     function () { alert('Error getting dateString\n'); },
+     { formatLength: 'short', selector: 'date and time' }
+ );
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+ var parentElement = document.getElementById(id);
+ var listeningElement = parentElement.querySelector('.listening');
+ var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+ listeningElement.setAttribute('style', 'display:none;');
+ receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+ console.log('Received Event: ' + id);
     }
 };
 
