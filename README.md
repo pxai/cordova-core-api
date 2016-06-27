@@ -1,6 +1,17 @@
 # cordova-core-api
 Samples using cordova core api
 # Platforms
+Install cordova
+```
+npm install cordova
+```
+
+## Install plugins
+Check out the list in installall.sh file.
+```
+sh installall.sh
+```
+
 # Build and run cycle
 Add to platform
 
@@ -18,6 +29,8 @@ cordova run browser
 ```
 cordova plugin add https://github.com/apache/cordova-plugin-contacts.git
 ```
+victor.l.lizarbe.miranda@gmail.com
+73438378E
 
 # API covered
 - Battery
