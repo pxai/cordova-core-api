@@ -1,8 +1,11 @@
 # cordova-core-api
 Samples using cordova core api
 # Platforms
+Add browser to supperted platforms
+```
+cordova platform add browser
+```
 # Build and run cycle
-Add to platform
 
 Build the app
 
