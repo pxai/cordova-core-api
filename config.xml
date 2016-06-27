@@ -24,7 +24,11 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-
+        <!-- We could define preferences in config.xml
+        // <preference name="SplashScreenDelay" value="3000" />
+        // <preference name="FadeSplashScreenDuration" value="1000"/
+        //}, splashDuration - fadeDuration);-->
+        
     <platform name="browser">
      <preference name="AutoHideSplashScreen" value="true" />
         <preference name="SplashScreen" value="/www/img/logo.png" /> <!-- defaults to "/img/logo.png" -->
