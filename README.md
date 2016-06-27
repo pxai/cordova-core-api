@@ -1,10 +1,24 @@
 # cordova-core-api
 Samples using cordova core api
 # Platforms
+
 Add browser to supperted platforms
 ```
 cordova platform add browser
 ```
+
+Install cordova
+```
+npm install cordova
+```
+
+## Install plugins
+Check out the list in installall.sh file.
+```
+sh installall.sh
+```
+
+
 # Build and run cycle
 
 Build the app
