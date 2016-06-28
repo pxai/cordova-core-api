@@ -17,62 +17,62 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        // Shows battery status:
-        window.addEventListener('batterystatus', onBatteryStatus, false);
+ // Application Constructor
+ initialize: function() {
+  this.bindEvents();
+ },
+ // Bind Event Listeners
+ //
+ // Bind any events that are required on startup. Common events are:
+ // 'load', 'deviceready', 'offline', and 'online'.
+ bindEvents: function() {
+  document.addEventListener('deviceready', this.onDeviceReady, false);
+ },
+ // deviceready Event Handler
+ //
+ // The scope of 'this' is the event. In order to call the 'receivedEvent'
+ // function, we must explicitly call 'app.receivedEvent(...);'
+ onDeviceReady: function() {
+  app.receivedEvent('deviceready');
+  // Shows battery status:
+  window.addEventListener('batterystatus', onBatteryStatus, false);
 
-        function onBatteryStatus(status) {
-            var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
-            $('#status').html(msg);
-            console.log(msg);
-        }
+  function onBatteryStatus(status) {
+var msg = 'Level: ' + status.level + ' isPlugged: ' + status.isPlugged;
+$('#status').html(msg);
+console.log(msg);
+  }
 
-        // Battery low event
-        window.addEventListener('batterylow', onBatteryLow, false);
+  // Battery low event
+  window.addEventListener('batterylow', onBatteryLow, false);
 
-        function onBatteryLow(status) {
-            var msg = 'Battery Level Low ' + status.level + '%';
-            $('#status').html(msg);
-            console.log(msg);
-        }
+  function onBatteryLow(status) {
+var msg = 'Battery Level Low ' + status.level + '%';
+$('#status').html(msg);
+console.log(msg);
+  }
 
-        // Battery critical
-        window.addEventListener('batterycritical', onBatteryCritical, false);
+  // Battery critical
+  window.addEventListener('batterycritical', onBatteryCritical, false);
 
-        function onBatteryCritical(status) {
-            var msg = 'Battery Level Critical ' + status.level + '%\nRecharge Soon!';
-            $('#status').html(msg);
-            console.log(msg);
-        }
+  function onBatteryCritical(status) {
+var msg = 'Battery Level Critical ' + status.level + '%\nRecharge Soon!';
+$('#status').html(msg);
+console.log(msg);
+  }
 
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+ },
+ // Update DOM on a Received Event
+ receivedEvent: function(id) {
+  var parentElement = document.getElementById(id);
+  var listeningElement = parentElement.querySelector('.listening');
+  var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+  listeningElement.setAttribute('style', 'display:none;');
+  receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
-    }
+  console.log('Received Event: ' + id);
+ }
 };
 
 app.initialize();
